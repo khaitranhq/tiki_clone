@@ -1,0 +1,81 @@
+/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 02/01/2021 04:01
+  	*/
+
+@font-face {
+  font-family: 'Flaticon';
+  src: url('./Flaticon.eot');
+  src: url('./Flaticon.eot?#iefix') format('embedded-opentype'),
+    url('./Flaticon.woff2') format('woff2'),
+    url('./Flaticon.woff') format('woff'),
+    url('./Flaticon.ttf') format('truetype'),
+    url('./Flaticon.svg#Flaticon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'Flaticon';
+    src: url('./Flaticon.svg#Flaticon') format('svg');
+  }
+}
+
+[class^='flaticon-']:before,
+[class*=' flaticon-']:before,
+[class^='flaticon-']:after,
+[class*=' flaticon-']:after {
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-mobile-phone:before {
+  content: '\f100';
+}
+.flaticon-monitor:before {
+  content: '\f101';
+}
+.flaticon-headphones:before {
+  content: '\f102';
+}
+.flaticon-laptop:before {
+  content: '\f103';
+}
+.flaticon-photo-camera:before {
+  content: '\f104';
+}
+.flaticon-washing-machine:before {
+  content: '\f105';
+}
+.flaticon-pot:before {
+  content: '\f106';
+}
+.flaticon-spray:before {
+  content: '\f107';
+}
+.flaticon-feeding-bottle:before {
+  content: '\f108';
+}
+.flaticon-lipstick:before {
+  content: '\f109';
+}
+.flaticon-tshirt:before {
+  content: '\f10a';
+}
+.flaticon-basketball-ball:before {
+  content: '\f10b';
+}
+.flaticon-motorbike:before {
+  content: '\f10c';
+}
+.flaticon-internet:before {
+  content: '\f10d';
+}
+.flaticon-book:before {
+  content: '\f10e';
+}
+.flaticon-gift-voucher:before {
+  content: '\f10f';
+}
+

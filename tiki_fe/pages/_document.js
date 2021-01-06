@@ -27,6 +27,11 @@ export default class _Document extends Document {
     return (
       <Html>
         <Head>
+          <link
+            rel='stylesheet'
+            type='text/css'
+            href='http://localhost:3000/icons/flaticon.css'
+          />
         </Head>
         <body>
           <Main />
