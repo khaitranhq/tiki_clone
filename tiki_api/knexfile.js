@@ -1,49 +1,21 @@
 /*eslint-disable hapi/hapi-scope-start */
 'use strict';
 
-module.exports = {
-  development: {
-    client: 'pg',
-    connection: {
-      host: 'localhost',
-      port: '5432',
-      user: 'postgres',
-      password: 'Pass@word1',
-      database: 'tiki',
-      pool: {
-        min: 0,
-        max: 7
-      }
+const Path = require('path');
+const Hoek = require('hoek');
+const Manifest = require('./server/manifest');
+const PluginConfig = require('./lib/plugins/schwifty').plugins.options;
+
+// Take schwifty registration's knex option
+// but specify the plugin's migrations directory
+
+module.exports = Hoek.applyToDefaults(
+  {
+    migrations: {
+      directory: Path.relative(process.cwd(), PluginConfig.migrationsDir)
     }
   },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      host: 'localhost',
-      port: '5432',
-      user: 'postgres',
-      password: 'Pass@word1',
-      database: 'tiki',
-      pool: {
-        min: 0,
-        max: 7
-      }
-    }
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      host: 'localhost',
-      port: '5432',
-      user: 'postgres',
-      password: 'Pass@word1',
-      database: 'tiki',
-      pool: {
-        min: 0,
-        max: 7
-      }
-    }
-  }
-};
+  Manifest.get('/register/plugins', process.env).find(
+    ({ plugin }) => plugin === 'schwifty'
+  ).options.knex
+);

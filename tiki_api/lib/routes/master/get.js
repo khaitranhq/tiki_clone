@@ -1,9 +1,12 @@
 'use strict';
 
 module.exports = {
-    method: '',
-    path: '',
-    options: {
-        handler: async (request, h) => {}
+  method: 'GET',
+  path: '/master',
+  options: {
+    handler: async (request, h) => {
+      const { masterGetService } = request.services();
+      return masterGetService.getMaster();
     }
+  }
 };
