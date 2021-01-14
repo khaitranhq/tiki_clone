@@ -1,4 +1,3 @@
-/tiki-api/node_modules/
-/tiki_fe/node_modules/
-/tiki_fe/.next/
+node_modules
+.next
 package-lock.json
