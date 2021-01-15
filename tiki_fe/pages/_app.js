@@ -1,12 +1,18 @@
 import { CssBaseline } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import theme from '../src/utils/theme';
 import Head from 'next/head';
+import { createStore } from 'redux';
+import homeReducer from '../src/reducers/home';
+import { createWrapper } from 'next-redux-wrapper';
 
-export default function _App(props) {
-  const { Component, pageProps } = props;
+const makeStore = () => {
+  return createStore(homeReducer);
+};
+
+function _App(props) {
+  const { Component, pageProps, store } = props;
 
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
@@ -15,7 +21,9 @@ export default function _App(props) {
     }
   }, []);
 
-  return (
+  const sheets = new ServerStyleSheets();
+
+  return sheets.collect(
     <React.Fragment>
       <Head>
         <title>Tiki</title>
@@ -33,7 +41,14 @@ export default function _App(props) {
   );
 }
 
-_App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired
+_App.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+
+  return { pageProps };
 };
+
+const wrapper = createWrapper(makeStore);
+
+export default wrapper.withRedux(_App);

@@ -1,12 +1,15 @@
 import { Box } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Navigation = () => {
+const Navigation = (props) => {
+  console.log(props)
   const openSubCategories = () => {
     console.log('open');
   };
+  return <div>ok</div>;
 
-  return (
+  /* return (
     <Box>
       {categories.map((category, key) => (
         <Box
@@ -24,7 +27,11 @@ const Navigation = () => {
         </Box>
       ))}
     </Box>
-  );
+  );*/
 };
 
-export default Navigation;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps)(Navigation);

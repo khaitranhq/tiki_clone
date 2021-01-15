@@ -10,15 +10,18 @@ const HomePage = () => {
   );
 };
 
-Home.getInitialProps = async (ctx) => {
+HomePage.getInitialProps = async (ctx) => {
+  let rootCategories = [];
   try {
-    const rootCategories = await request(POST, MASTER_GET_ENTRY_POINT);
-    return {
-      rootCategories
-    };
+    console.log(ctx.store);
+    // rootCategories = await request(POST, MASTER_GET_ENTRY_POINT);
   } catch (err) {
     console.log(err);
   }
+
+  return {
+    rootCategories
+  };
 };
 
 export default HomePage;
