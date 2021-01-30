@@ -5,7 +5,7 @@ import React from 'react';
 const style = (theme) => ({
   root: {},
   searchInput: {
-    background: '#000',
+    background: '#fff',
     width: '100%',
     height: 40,
     fontSize: 13,

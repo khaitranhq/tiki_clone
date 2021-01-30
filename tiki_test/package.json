@@ -19,7 +19,10 @@
     "haute-couture": "3.x.x",
     "joi": "17.x.x",
     "knex": "^0.21.15",
-    "objection": "^2.2.6"
+    "objection": "^2.2.6",
+    "puppeteer": "^5.5.0",
+    "selenium": "^2.20.0",
+    "selenium-webdriver": "^4.0.0-alpha.8"
   },
   "devDependencies": {
     "@hapi/code": "8.x.x",

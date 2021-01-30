@@ -8,10 +8,14 @@ module.exports = class Category extends Schwifty.Model {
     return 'Categories';
   }
 
+  static get idColumn() {
+    return 'categoryID';
+  }
+
   static get joiSchema() {
     return Joi.object({
       categoryID: Joi.number().integer().greater(0),
-      categoryName: Joi.string().required(),
+      categoryName: Joi.string(),
       icon: Joi.string(),
       parentID: Joi.number().integer().greater(0)
     });

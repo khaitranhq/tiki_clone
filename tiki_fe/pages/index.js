@@ -1,8 +1,10 @@
 import Home from '../components/home';
 import Layout from '../components/layout';
-import { MASTER_GET_ENTRY_POINT, POST, request } from '../src/utils/apiRequest';
+import { saveCategories } from '../src/actions/home.action';
+import { wrapper } from '../src/store';
+import { GET, MASTER_GET_ENTRY_POINT, request } from '../src/utils/apiRequest';
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <Layout>
       <Home />
@@ -10,18 +12,23 @@ const HomePage = () => {
   );
 };
 
-HomePage.getInitialProps = async (ctx) => {
-  let rootCategories = [];
+export const getStaticProps = wrapper.getServerSideProps(async ({ store }) => {
   try {
-    console.log(ctx.store);
-    // rootCategories = await request(POST, MASTER_GET_ENTRY_POINT);
+    const result = await request(GET, MASTER_GET_ENTRY_POINT);
+
+    store.dispatch(saveCategories(result.data));
+
+    return {
+      props: {
+        status: 'ok'
+      }
+    };
   } catch (err) {
     console.log(err);
+    return {
+      notFound: true
+    };
   }
-
-  return {
-    rootCategories
-  };
-};
+});
 
 export default HomePage;
