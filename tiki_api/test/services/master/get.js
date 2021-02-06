@@ -20,15 +20,11 @@ describe('TestRoutes', () => {
     await server.stop();
   });
 
-  describe('Test master get route', () => {
-    it('Should return array of root categories', async () => {
-      const request = await server.inject({
-        method: 'get',
-        url: '/master'
-      });
+  describe('Test master get service', () => {
+    it('should return root categories', async () => {
+      const { categories } = await server.services().masterGetService.getMaster();
 
-      expect(request.statusCode).to.equal(200);
-      expect(request.result.categories).to.be.an.array();
+      expect(categories).to.be.an.array();
     });
   });
 });

@@ -1,14 +1,12 @@
-version: "3"
+version: '3'
 services:
   database:
-    image: "postgres:latest"
+    image: 'postgres:latest'
     restart: always
+    volumes:
+      - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
     environment:
-        - POSTGRES_PASSWORD=Pass@word1
-        - POSTGRES_DB=tiki
+      - POSTGRES_PASSWORD=Pass@word1
+      - POSTGRES_MULTIPLE_DATABASES=tiki,tiki_test
     ports:
-      - "5433:5432"
-  redis:
-    image: "redis:latest"
-    ports:
-      - "6380:6379"
+      - '5433:5432'

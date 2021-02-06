@@ -40,9 +40,9 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
   return knex.schema
-    .dropTable('Roles')
-    .dropTable('UserAccounts')
-    .dropTable('Categories')
+    .dropTable('AdditionalProductInfomations')
     .dropTable('Products')
-    .dropTable('AdditionalProductInfomations');
+    .dropTable('Categories')
+    .dropTable('UserAccounts')
+    .dropTable('Roles');
 };

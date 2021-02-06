@@ -6,7 +6,9 @@ module.exports = {
   options: {
     handler: async (request, h) => {
       const { masterGetService } = request.services();
-      return masterGetService.getMaster();
+
+      const masterData = await masterGetService.getMaster();
+      return masterData;
     }
   }
 };

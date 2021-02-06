@@ -1,4 +1,3 @@
-/*eslint-disable hapi/hapi-scope-start */
 'use strict';
 
 const Path = require('path');

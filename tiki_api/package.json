@@ -11,9 +11,9 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node server",
-    "test": "lab -a @hapi/code -L",
+    "test": "node ./server/dbSetupForTesting.js && lab -a @hapi/code -L",
     "lint": "eslint .",
-    "dev": "NODE_ENV=development nodemon server"
+    "dev": "nodemon server"
   },
   "dependencies": {
     "@hapi/boom": "9.x.x",
